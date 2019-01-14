@@ -2,7 +2,7 @@ package com.utoblock.sdk.core;
 
 import com.alibaba.fastjson.JSON;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.response.ConsumeResponse;
 import com.utoblock.sdk.enums.ResponseCode;
@@ -79,11 +79,6 @@ public class ConsumeManager extends BaseManager {
         return extras("");
     }
 
-    public ConsumeManager timestamp(long timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
     public ConsumeResponse start() {
         try {
             // 1.校验参数
@@ -94,7 +89,7 @@ public class ConsumeManager extends BaseManager {
             Map<String, Object> paramMap = new HashMap<String, Object>(signParamMap);
             paramMap.put("sign", signStr);
             // 4.构造请求url
-            return ConsumeResponse.response(ResponseCode.CODE_200.code, ResponseCode.CODE_200.message, URLEncoder.encode(Base64.encode(JSON.toJSONString(paramMap).getBytes(SuperBlockConfig.getCharset())), SuperBlockConfig.getCharset()));
+            return ConsumeResponse.response(ResponseCode.CODE_200.code, ResponseCode.CODE_200.message, URLEncoder.encode(Base64.encode(JSON.toJSONString(paramMap).getBytes(UtoBlockConfig.getCharset())), UtoBlockConfig.getCharset()));
         } catch (Exception e) {
             e.printStackTrace();
         }

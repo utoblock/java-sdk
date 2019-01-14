@@ -1,7 +1,7 @@
 package com.utoblock.sdk.core;
 
 import com.alibaba.fastjson.JSON;
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.response.TransactionResponse;
 import com.utoblock.sdk.enums.ResponseCode;
@@ -44,11 +44,6 @@ public class TransactionManager extends BaseManager {
         return this;
     }
 
-    public TransactionManager timestamp(long timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
     public TransactionResponse start() {
         try {
             // 1.参数检查
@@ -59,7 +54,7 @@ public class TransactionManager extends BaseManager {
             Map<String, Object> paramMap = new HashMap<String, Object>(signParamMap);
             paramMap.put("sign", signStr);
             // 4.发送请求
-            String response = HttpTool.post(SuperBlockConfig.getGateway() + SuperBlockConfig.getTransactionPath(), JSON.toJSONString(paramMap), SuperBlockConfig.getCharset());
+            String response = HttpTool.post(UtoBlockConfig.getGateway() + UtoBlockConfig.getTransactionPath(), JSON.toJSONString(paramMap), UtoBlockConfig.getCharset());
             return TransactionResponse.response(response);
         } catch (Exception e) {
             e.printStackTrace();

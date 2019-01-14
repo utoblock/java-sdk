@@ -2,7 +2,7 @@ package com.utoblock.sdk.core;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.response.ConsumeResultResponse;
 import com.utoblock.sdk.utils.ECC;
@@ -38,8 +38,8 @@ public class ConsumeResultManager extends BaseManager {
                 String sign = resultObject.getString("sign");
                 resultObject.remove("sign");
                 // 4.检查签名
-                String signParamStr = StringUtils.paramString(JsonUtils.toMap(resultObject), SuperBlockConfig.getCharset());
-                boolean verifySignResult = ECC.verifySign(signParamStr, sign, SuperBlockConfig.getPlatformPubKey(), SuperBlockConfig.getCharset());
+                String signParamStr = StringUtils.paramString(JsonUtils.toMap(resultObject), UtoBlockConfig.getCharset());
+                boolean verifySignResult = ECC.verifySign(signParamStr, sign, UtoBlockConfig.getPlatformPubKey(), UtoBlockConfig.getCharset());
                 if (verifySignResult) {
                     ConsumeResultResponse resultResponse = resultObject.toJavaObject(ConsumeResultResponse.class);
                     resultResponse.setCode(200);

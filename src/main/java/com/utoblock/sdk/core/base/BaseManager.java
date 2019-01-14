@@ -1,6 +1,6 @@
 package com.utoblock.sdk.core.base;
 
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.utils.ECC;
 import com.utoblock.sdk.utils.StringUtils;
 
@@ -31,13 +31,13 @@ public abstract class BaseManager {
      */
     protected String generateSign() throws Exception {
         // 添加通用参数参数
-        this.signParamMap.put("appKey", SuperBlockConfig.getAppKey());
-        this.signParamMap.put("charset", SuperBlockConfig.getCharset());
+        this.signParamMap.put("appKey", UtoBlockConfig.getAppKey());
+        this.signParamMap.put("charset", UtoBlockConfig.getCharset());
         this.signParamMap.put("timestamp", String.valueOf(timestamp));
         // 按顺序组装参数
-        String paramStr = StringUtils.paramString(this.signParamMap, SuperBlockConfig.getCharset());
+        String paramStr = StringUtils.paramString(this.signParamMap, UtoBlockConfig.getCharset());
         // 使用pub_key加密参数
-        return ECC.sign(paramStr, SuperBlockConfig.getKey(), SuperBlockConfig.getCharset());
+        return ECC.sign(paramStr, UtoBlockConfig.getKey(), UtoBlockConfig.getCharset());
     }
 
     protected void putSign(String key, String value) {

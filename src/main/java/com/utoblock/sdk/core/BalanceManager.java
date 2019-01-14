@@ -1,7 +1,7 @@
 package com.utoblock.sdk.core;
 
 import com.alibaba.fastjson.JSON;
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.response.BalanceResponse;
 import com.utoblock.sdk.enums.ResponseCode;
@@ -30,11 +30,6 @@ public class BalanceManager extends BaseManager {
         return this;
     }
 
-    public BalanceManager timestamp(long timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
     public BalanceResponse start() {
         try {
             // 1.参数检查
@@ -45,7 +40,7 @@ public class BalanceManager extends BaseManager {
             Map<String, Object> paramMap = new HashMap<String, Object>(signParamMap);
             paramMap.put("sign", signStr);
             // 4.发送请求
-            String response = HttpTool.post(SuperBlockConfig.getGateway() + SuperBlockConfig.getBalancePath(), JSON.toJSONString(paramMap), SuperBlockConfig.getCharset());
+            String response = HttpTool.post(UtoBlockConfig.getGateway() + UtoBlockConfig.getBalancePath(), JSON.toJSONString(paramMap), UtoBlockConfig.getCharset());
             return BalanceResponse.response(response);
         } catch (Exception e) {
             e.printStackTrace();

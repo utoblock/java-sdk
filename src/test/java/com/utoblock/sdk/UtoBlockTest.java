@@ -22,7 +22,6 @@ public class UtoBlockTest {
                 .key("1")
                 .extras("你好")
                 .description("asdfzxcv哈哦啊$#@")
-                .timestamp(System.currentTimeMillis())
                 .start();
         assertEquals(200, response.getCode());
         System.out.println("挖矿完成，结果：" + JSON.toJSONString(response));
@@ -46,7 +45,6 @@ public class UtoBlockTest {
         System.out.println("开始测试查询余额");
         BalanceResponse response = UtoBlock.balance()
                 .account("13710966390")
-                .timestamp(System.currentTimeMillis())
                 .start();
         assertEquals(200, response.getCode());
         System.out.println("查询余额完成,结果：" + JSON.toJSONString(response));
@@ -69,7 +67,6 @@ public class UtoBlockTest {
         System.out.println("开始测试登录");
         LoginResponse response = UtoBlock.login()
                 .account("13710966390")
-                .timestamp(System.currentTimeMillis())
                 .start();
         assertEquals(200, response.getCode());
         System.out.println("登录结果,结果：" + JSON.toJSONString(response));

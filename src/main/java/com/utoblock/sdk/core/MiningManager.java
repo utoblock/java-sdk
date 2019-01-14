@@ -1,7 +1,7 @@
 package com.utoblock.sdk.core;
 
 import com.alibaba.fastjson.JSON;
-import com.utoblock.sdk.config.SuperBlockConfig;
+import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.response.MiningResponse;
 import com.utoblock.sdk.enums.ResponseCode;
@@ -59,11 +59,6 @@ public class MiningManager extends BaseManager {
         return extras(JSON.toJSONString(extras));
     }
 
-    public MiningManager timestamp(long timestamp) {
-        this.timestamp = timestamp;
-        return this;
-    }
-
     public MiningResponse start() {
         try {
             // 1.校验参数
@@ -74,7 +69,7 @@ public class MiningManager extends BaseManager {
             Map<String, Object> paramMap = new HashMap<String, Object>(signParamMap);
             paramMap.put("sign", signStr);
             // 4.使用httpClient发送请求到超级部落后台服务器
-            String response = HttpTool.post(SuperBlockConfig.getGateway() + SuperBlockConfig.getMiningPath(), JSON.toJSONString(paramMap), SuperBlockConfig.getCharset());
+            String response = HttpTool.post(UtoBlockConfig.getGateway() + UtoBlockConfig.getMiningPath(), JSON.toJSONString(paramMap), UtoBlockConfig.getCharset());
             // 5.格式化服务器响应
             return JSON.parseObject(response, MiningResponse.class);
         } catch (Exception e) {

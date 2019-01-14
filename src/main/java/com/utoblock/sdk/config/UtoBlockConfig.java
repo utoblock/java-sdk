@@ -11,15 +11,15 @@ import java.util.Properties;
  * 创建人：yoan
  * 创建日期：2018/10/8
  */
-public class SuperBlockConfig {
+public class UtoBlockConfig {
 
     private final static String DEFAULT_CHARSET = "utf-8";
 
-    public final static String CONFIG_APP_KEY = "com.superblock.app_key";
-    public final static String CONFIG_KEY = "com.superblock.key";
-    public final static String CONFIG_GATEWAY = "com.superblock.gateway";
-    public final static String CONFIG_NOTIFY_URL = "com.superblock.notify_url";
-    public final static String CONFIG_PLATFORM_PUB_KEY = "com.superblock.platform_pub_key";
+    public final static String CONFIG_APP_KEY = "com.utoblock.app_key";
+    public final static String CONFIG_KEY = "com.utoblock.key";
+    public final static String CONFIG_GATEWAY = "com.utoblock.gateway";
+    public final static String CONFIG_NOTIFY_URL = "com.utoblock.notify_url";
+    public final static String CONFIG_PLATFORM_PUB_KEY = "com.utoblock.platform_pub_key";
 
     private static String appKey;
     private static String key;
@@ -35,7 +35,7 @@ public class SuperBlockConfig {
     static {
         try {
             Properties properties = new Properties();
-            InputStream in = UtoBlock.class.getClassLoader().getResourceAsStream("superblock.properties");
+            InputStream in = UtoBlock.class.getClassLoader().getResourceAsStream("utoblock.properties");
             properties.load(in);
             loadProperties(properties);
         } catch (IOException e) {
