@@ -31,6 +31,7 @@ public class UtoBlockConfig {
     private static String balancePath = "/sdk/balance";
     private static String transactionPath = "/sdk/transaction";
     private static String loginPath = "/sdk/wallet/login";
+    private static String consumeNoPassPath = "/sdk/consume/nopass";
 
     static {
         try {
@@ -93,5 +94,9 @@ public class UtoBlockConfig {
 
     public static String getLoginPath() {
         return loginPath;
+    }
+
+    public static String getConsumeNoPassPath() {
+        return consumeNoPassPath;
     }
 }
