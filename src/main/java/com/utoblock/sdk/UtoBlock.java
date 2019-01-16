@@ -9,27 +9,66 @@ import com.utoblock.sdk.core.*;
  */
 public class UtoBlock {
 
-    public static MiningManager mining(){
+    /**
+     * 挖矿
+     *
+     * @return
+     */
+    public static MiningManager mining() {
         return new MiningManager();
     }
 
-    public static ConsumeManager consume(){
+    /**
+     * 消费
+     *
+     * @return
+     */
+    public static ConsumeManager consume() {
         return new ConsumeManager();
     }
 
-    public static BalanceManager balance(){
+    /**
+     * 免密消费
+     *
+     * @return
+     */
+    public static ConsumeNoPassManager consumeWithoutPass() {
+        return new ConsumeNoPassManager();
+    }
+
+    /**
+     * 查询余额
+     *
+     * @return
+     */
+    public static BalanceManager balance() {
         return new BalanceManager();
     }
 
-    public static TransactionManager transaction(){
+    /**
+     * 查询流水
+     *
+     * @return
+     */
+    public static TransactionManager transaction() {
         return new TransactionManager();
     }
 
-    public static ConsumeResultManager consumeResult(){
+    /**
+     * 消费回调处理
+     *
+     * @return
+     */
+    public static ConsumeResultManager consumeResult() {
         return new ConsumeResultManager();
     }
 
-    public static LoginManager login(){
+    /**
+     * 钱包登录
+     *
+     * @return
+     */
+    public static LoginManager login() {
         return new LoginManager();
     }
 }

@@ -41,6 +41,20 @@ public class UtoBlockTest {
         System.out.println("消费完成，结果：" + JSON.toJSONString(response));
     }
 
+    public void consumeWithoutPass() {
+        System.out.println("开始测试消费");
+        ConsumeNoPassResponse response = UtoBlock.consumeWithoutPass()
+                .name("一台手机")
+                .account("13710966390")
+                .value(BigDecimal.valueOf(0.01))
+                .tradeNo("3")
+                .extras("你好啊")
+                .description("哈哈啊")
+                .start();
+        assertEquals(200, response.getCode());
+        System.out.println("消费完成，结果：" + JSON.toJSONString(response));
+    }
+
     public void balance() {
         System.out.println("开始测试查询余额");
         BalanceResponse response = UtoBlock.balance()
@@ -50,7 +64,6 @@ public class UtoBlockTest {
         System.out.println("查询余额完成,结果：" + JSON.toJSONString(response));
     }
 
-    @Test
     public void transaction() {
         System.out.println("开始测试查询流水");
         TransactionResponse response = UtoBlock.transaction()
@@ -62,7 +75,6 @@ public class UtoBlockTest {
         System.out.println("查询流水完成，结果：" + JSON.toJSONString(response));
     }
 
-    @Test
     public void login(){
         System.out.println("开始测试登录");
         LoginResponse response = UtoBlock.login()

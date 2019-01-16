@@ -5,6 +5,7 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.utoblock.sdk.config.UtoBlockConfig;
 import com.utoblock.sdk.core.base.BaseManager;
 import com.utoblock.sdk.enums.ResponseCode;
+import com.utoblock.sdk.response.ConsumeNoPassResponse;
 import com.utoblock.sdk.response.ConsumeResponse;
 import com.utoblock.sdk.utils.HttpTool;
 import com.utoblock.sdk.utils.StringUtils;
@@ -80,7 +81,7 @@ public class ConsumeNoPassManager extends BaseManager {
         return extras("");
     }
 
-    public ConsumeResponse start() {
+    public ConsumeNoPassResponse start() {
         try {
             // 1.校验参数
             checkParam();
@@ -91,11 +92,11 @@ public class ConsumeNoPassManager extends BaseManager {
             paramMap.put("sign", signStr);
             // 4.发起请求
             String response = HttpTool.post(UtoBlockConfig.getGateway() + UtoBlockConfig.getConsumeNoPassPath(), JSON.toJSONString(paramMap), UtoBlockConfig.getCharset());
-            return ConsumeResponse.response(ResponseCode.CODE_200.code, ResponseCode.CODE_200.message, URLEncoder.encode(Base64.encode(JSON.toJSONString(paramMap).getBytes(UtoBlockConfig.getCharset())), UtoBlockConfig.getCharset()));
+            return ConsumeNoPassResponse.response(response);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ConsumeResponse.response(ResponseCode.CODE_500.code, ResponseCode.CODE_500.message);
+        return ConsumeNoPassResponse.response(ResponseCode.CODE_500.code, ResponseCode.CODE_500.message);
     }
 
     @Override
